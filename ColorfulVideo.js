@@ -34,7 +34,7 @@ var ColorfulVideo={
 		ColorfulVideo.videoElement = options.videoElement;
 		ColorfulVideo.colorAttribute = options.colorAttribute;
 		ColorfulVideo.animationSequence = options.animationSequence;
-		ColorfulVideo.startValue = ColorfulVideo.targetElement.style[colorAttribute];
+		ColorfulVideo.startValue = ColorfulVideo.targetElement.style[ColorfulVideo.colorAttribute.colorAttribute];
 		// set black if empty
 		if (ColorfulVideo.startValue == ''){
 			ColorfulVideo.startValue = '#0000';
@@ -45,7 +45,7 @@ var ColorfulVideo={
 		}
 		ColorfulVideo.animationKeyPoints = Object.keys(ColorfulVideo.animationSequence).sort(ColorfulVideo.compareNumbers);
 		// check the video
-		videoElement.addEventListener("timeupdate", ColorfulVideo.watchTheTime, true);
+		ColorfulVideo.videoElement.addEventListener("timeupdate", ColorfulVideo.watchTheTime, true);
 	},
 	
 	watchTheTime: function(){
@@ -68,7 +68,7 @@ var ColorfulVideo={
 	},
 	
 	showExactTime:function(){
-		videoElement.addEventListener("timeupdate", function(){console.log(ColorfulVideo.videoElement.currentTime.toFixed(2));}, true);
+		ColorfulVideo.videoElement.addEventListener("timeupdate", function(){console.log(ColorfulVideo.videoElement.currentTime.toFixed(2));}, true);
 	},
 	
 	compareNumbers: function(a,b){
