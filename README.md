@@ -1,9 +1,9 @@
 # ColorfulVideo
-Change background colors by the exact time of a HTML 5 video in order for it to look fancy
+Change background colors by the exact time of a YouTube(R) video in order for it to look fancy
 
 ## What is this?
 
-Well, imagine you have a page with a nice HTML 5 video, and it has some big free space around.
+Well, imagine you have a page with a nice video, and it has some big free space around.
 Wouldn't it be nice to set the background color so that it matches the video?
 
 This library helps you do that. Before you ask: No, it doesn't scan your video dynamically (it was the first idea).
@@ -14,7 +14,9 @@ You just set the colors and the time, and it will execute.
 
 ```javascript
 var colorAttribute = 'background';
-var videoElement= document.getElementById('v');
+// get the youtube player - you can also set it inside of the youtube callback
+// you will need to embed the video with the youtube iframe api, and not via iframe
+var videoElement= ytplayer;
 var targetElement = document.getElementById('lp-pom-block-11-color-overlay');
 var animationSequence=[];
 animationSequence[39.80] = '#192133';
