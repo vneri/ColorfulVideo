@@ -1,3 +1,4 @@
+<script>
 // Library for changing background colors by time of a HTML 5 video
 // Create stunning fullscreen color effects
 // published under MIT license, Valerio Neri
@@ -13,7 +14,7 @@
 		animationSequence[29] = '#AAE580';
 
 		var targetElement = document.getElementById('background');
-		var videoElement = document.getElementById('video');
+		var videoElement = Yytplayer;
 		var colorAttribute = 'background';
 		
 		
@@ -45,17 +46,19 @@ var ColorfulVideo={
 		}
 		ColorfulVideo.animationKeyPoints = Object.keys(ColorfulVideo.animationSequence).sort(ColorfulVideo.compareNumbers);
 		// check the video
-		ColorfulVideo.videoElement.addEventListener("timeupdate", ColorfulVideo.watchTheTime, true);
+      	//
+      	window.setInterval(ColorfulVideo.watchTheTime, 50);
+		//ColorfulVideo.videoElement.addEventListener("timeupdate", ColorfulVideo.watchTheTime, true);
 	},
 	
 	watchTheTime: function(){
 		// check the time and set the color
-		var actualValue = ColorfulVideo.animationSequence[Math.round(ColorfulVideo.videoElement.currentTime.toFixed(2) * 1e2) / 1e2];
+		var actualValue = ColorfulVideo.animationSequence[Math.round(ColorfulVideo.videoElement.getCurrentTime().toFixed(2) * 1e2) / 1e2];
 		if (actualValue == undefined ){
 			// search the nearest to the actual time and get that value
 			var targetIndex = ColorfulVideo.animationKeyPoints.find(
 				function(el){ 
-					return el <= Math.round(ColorfulVideo.videoElement.currentTime.toFixed(2) * 1e2) / 1e2;
+					return el <= Math.round(ColorfulVideo.videoElement.getCurrentTime().toFixed(2) * 1e2) / 1e2;
 				});
 			if (targetIndex != undefined){
 				actualValue = ColorfulVideo.animationSequence[targetIndex];
@@ -68,7 +71,7 @@ var ColorfulVideo={
 	},
 	
 	showExactTime:function(){
-		ColorfulVideo.videoElement.addEventListener("timeupdate", function(){console.log(ColorfulVideo.videoElement.currentTime.toFixed(2));}, true);
+        	window.setInterval(function(){console.log(ColorfulVideo.videoElement.getCurrentTime().toFixed(2))} , 50);
 	},
 	
 	compareNumbers: function(a,b){
@@ -77,3 +80,5 @@ var ColorfulVideo={
 	}
 	
 }
+
+</script>
