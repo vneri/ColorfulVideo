@@ -1,4 +1,3 @@
-<script>
 // Library for changing background colors by time of a HTML 5 video
 // Create stunning fullscreen color effects
 // published under MIT license, Valerio Neri
@@ -80,5 +79,3 @@ var ColorfulVideo={
 	}
 	
 }
-
-</script>
